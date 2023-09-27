@@ -5,17 +5,20 @@ namespace UITTimeline.Editor
     [CustomEditor(typeof(UITVisibilityClip))]
     public class UITVisibilityClipEditor : UnityEditor.Editor
     {
-        private SerializedProperty visible;
+        private SerializedProperty visibleOnStart;
+        private SerializedProperty visibleOnEnd;
 
         private void OnEnable()
         {
-            visible = serializedObject.FindProperty("_template.Visible");
+            visibleOnStart = serializedObject.FindProperty("_template.VisibleOnStart");
+            visibleOnEnd = serializedObject.FindProperty("_template.VisibleOnEnd");
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            EditorGUILayout.PropertyField(visible);
+            EditorGUILayout.PropertyField(visibleOnStart);
+            EditorGUILayout.PropertyField(visibleOnEnd);
             serializedObject.ApplyModifiedProperties();
         }
     }

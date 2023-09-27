@@ -14,7 +14,8 @@ namespace UITTimeline
     [Serializable]
     public class UITVisibilityBehaviour : UITBehaviour
     {
-        public bool Visible;
+        public bool VisibleOnStart;
+        public bool VisibleOnEnd;
 
         [HideInInspector] public List<VisualElement> Elements;
 
@@ -23,7 +24,7 @@ namespace UITTimeline
             if (Elements == null) return;
             foreach (var e in Elements)
             {
-                e.visible = Visible;
+                e.visible = VisibleOnStart;
             }
         }
 
@@ -32,7 +33,7 @@ namespace UITTimeline
             if (Elements == null) return;
             foreach (var e in Elements)
             {
-                e.visible = !Visible;
+                e.visible = VisibleOnEnd;
             }
         }
     }

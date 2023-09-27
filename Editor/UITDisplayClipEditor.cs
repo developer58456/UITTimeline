@@ -5,17 +5,20 @@ namespace UITTimeline.Editor
     [CustomEditor(typeof(UITDisplayClip))]
     public class UITDisplayClipEditor : UnityEditor.Editor
     {
-        private SerializedProperty display;
+        private SerializedProperty displayOnStart;
+        private SerializedProperty displayOnEnd;
 
         private void OnEnable()
         {
-            display = serializedObject.FindProperty("_template.Display");
+            displayOnStart = serializedObject.FindProperty("_template.DisplayOnStart");
+            displayOnEnd = serializedObject.FindProperty("_template.DisplayOnEnd");
         }
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
-            EditorGUILayout.PropertyField(display);
+            EditorGUILayout.PropertyField(displayOnStart);
+            EditorGUILayout.PropertyField(displayOnEnd);
             serializedObject.ApplyModifiedProperties();
         }
     }

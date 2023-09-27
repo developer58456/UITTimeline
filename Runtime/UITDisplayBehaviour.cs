@@ -14,7 +14,8 @@ namespace UITTimeline
     [Serializable]
     public class UITDisplayBehaviour : UITBehaviour
     {
-        public bool Display;
+        public bool DisplayOnStart;
+        public bool DisplayOnEnd;
 
         [HideInInspector] public List<VisualElement> Elements;
 
@@ -23,7 +24,7 @@ namespace UITTimeline
             if (Elements == null) return;
             foreach (var e in Elements)
             {
-                e.style.display = Display ? DisplayStyle.Flex : DisplayStyle.None;
+                e.style.display = DisplayOnStart ? DisplayStyle.Flex : DisplayStyle.None;
             }
         }
 
@@ -32,7 +33,7 @@ namespace UITTimeline
             if (Elements == null) return;
             foreach (var e in Elements)
             {
-                e.style.display = !Display ? DisplayStyle.Flex : DisplayStyle.None;
+                e.style.display = DisplayOnEnd ? DisplayStyle.Flex : DisplayStyle.None;
             }
         }
     }
